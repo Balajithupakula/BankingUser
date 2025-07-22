@@ -43,12 +43,15 @@ public class UserServiceImpl implements UserService {
 
         log.info("Updating user with ID: {}", userId);
         User oldCopy = new User(existing); // deep copy for audit
-
-        // Update fields
-        existing.setAddress(dto.getAddress());
-        existing.setKycVerified(dto.isKycVerified());
+        existing.setUsername(dto.getUsername());
+        existing.setEmail(dto.getEmail());
         existing.setPhoneNumber(dto.getPhoneNumber());
-        // Add other field updates here...
+        existing.setAddress(dto.getAddress());
+        existing.setCountry(dto.getCountry());
+        existing.setSsn(dto.getSsn());
+        existing.setKycVerified(dto.isKycVerified());
+        existing.setAccountType(dto.getAccountType());
+        existing.setDateOfBirth(dto.getDateOfBirth());
 
         User updated = userRepository.save(existing);
 
